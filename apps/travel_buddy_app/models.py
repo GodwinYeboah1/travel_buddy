@@ -4,11 +4,10 @@ from django.db import models
 from datetime import datetime
 from django.contrib import messages
 from django.utils import timezone
-import bcrypt
+
 
 
 class UserManger(models.Manager):
-    pass
     def register_validation(self, userData):
         # catch error system 
         response = {
@@ -16,7 +15,7 @@ class UserManger(models.Manager):
             'user': None,
             'valid': True
         }
-        # need to greater then 3 
+        
         if len(userData["name"]) < 3: 
             response["errors"].append('user name must be 3 charater and greater')
             response['valid'] = False
@@ -72,7 +71,7 @@ class User(models.Model):
     password = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    object  = UserManger()
+    objects  = UserManger()
 
 class Trip(models.Model):
     user = models.ForeignKey(User)
@@ -82,5 +81,5 @@ class Trip(models.Model):
     travel_date_to = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    object  = TripManger()
+    objects  = TripManger()
 
