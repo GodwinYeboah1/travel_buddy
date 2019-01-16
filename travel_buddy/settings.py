@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'apps.travel_buddy_app.urls',
+    'apps.travel_buddy_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

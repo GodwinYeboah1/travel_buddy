@@ -12,12 +12,15 @@
     <div class="wrapper">
         <!-- welcome message -->
         <h3>Welcome !</h3>
-        <form action="" method="post">
+        <form action="create/user" method="post">
+                {%csrf_token%}
         <fieldset>
             <legend>Register:</legend>
+            
             Name:         <input type="text" name="name" id="name"><br>
             Username:     <input type="text" name="username" id="username"><br>
             Password:     <input type="password" name="password" id="password"><br>
+            
             Confirm Pw    <input type="password" name="confirm_password" id="password"><br>
                         <input type="submit" value="Register">
         </fieldset>
@@ -26,6 +29,7 @@
         <form action="" method="post">
         <fieldset>
             <legend>Login:</legend>
+            {%csrf_token%}
             Username:   <input type="text" name="username" id="username"><br>
             Password:   <input type="password" name="password" id="password"><br>
                         <input type="submit" value="Login">
