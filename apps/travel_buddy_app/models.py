@@ -16,7 +16,7 @@ class UserManger(models.Manager):
             'user': None,
             'valid': True
         }
-        # need to greater then 3 
+        
         if len(userData["name"]) < 3: 
             response["errors"].append('user name must be 3 charater and greater')
             response['valid'] = False
