@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login / Registration</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "travel_buddy_app/css/login_register.css" %}">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- welcome message -->
+        <h3>Welcome !</h3>
+        <form action="" method="post">
+        <fieldset>
+            <legend>Register:</legend>
+            Name:         <input type="text" name="name" id="name"><br>
+            Username:     <input type="text" name="username" id="username"><br>
+            Password:     <input type="password" name="password" id="password"><br>
+            Confirm Pw    <input type="password" name="confirm_password" id="password"><br>
+                        <input type="submit" value="Register">
+        </fieldset>
+        </form>
+
+        <form action="" method="post">
+        <fieldset>
+            <legend>Login:</legend>
+            Username:   <input type="text" name="username" id="username"><br>
+            Password:   <input type="password" name="password" id="password"><br>
+                        <input type="submit" value="Login">
+        </fieldset>
+        </form>
+    </div>    
+</body>
+</html>

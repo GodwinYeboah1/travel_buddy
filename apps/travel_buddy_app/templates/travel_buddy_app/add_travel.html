@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Plan</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "travel_buddy_app/css/add_travel.css" %}">
+</head>
+<body>
+    <nav>
+        <a href="/main">Logout</a>
+        <a href="/travels/add">Add travel plan</a>
+    </nav>
+    
+    <div>
+        <h2> Add a Trip </h2>
+        <form action="" method="post">
+                    Desintation:         <input type="text" name="name" id="name"><br>
+                    description:         <input type="text" name="username" id="username"><br>
+                    Travel Date From:    <input type="password" name="password" id="password"><br>
+                    Travel Date To:      <input type="password" name="confirm_password" id="password"><br>
+                                        <input type="submit" value="Add" class="travel-add--btn">
+        </form>
+
+    </div>
+</body>
+</html>

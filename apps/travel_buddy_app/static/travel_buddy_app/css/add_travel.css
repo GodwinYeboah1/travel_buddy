@@ -1,0 +1,13 @@
+nav {
+    display: block;
+    text-align: right;
+}
+
+nav a {
+    margin: 0 10px 0 0;
+}
+
+.travel-add--btn { 
+    /*  change the area of the btn */
+    float: right;
+}
