@@ -4,7 +4,9 @@ from django.db import models
 from datetime import datetime
 from django.contrib import messages
 from django.utils import timezone
-
+import re
+import bcrypt
+EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9+-._]+@[a-zA-Z0-9+-._]+\.[a-zA-Z]+$')
 
 
 class UserManger(models.Manager):
@@ -24,17 +26,17 @@ class UserManger(models.Manager):
             response["errors"].append('password name must be 8 charater and greater')
             response['valid'] = False
 
-        if len(userData["password"] != userData["confirm_password"]):
+        if userData["password"] != userData["confirm_password"]:
             response['errors'].append('Your password does not match')
             response['valid'] = False
         else:
             if response['valid']:
-                userData.save(
-                    name=userData['name'], 
-                    username=userData['username'], 
-                    password=userData['password']
+                response['user'] = User.objects.create(
+                name=userData["name"],
+                username=userData["username"], 
+                password =userData["password"] 
                 )
-
+            return response
 
 class TripManger(models.Manager):
     
@@ -61,25 +63,31 @@ class TripManger(models.Manager):
                     travel_date_from = tripData['travel_date_from'], 
                     travel_date_to = tripData['travel_date_to'], 
                 )
+            return response
                 
-
 
 # Create your models here.
 class User(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50 )
     username = models.CharField(max_length=50)
     password = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects  = UserManger()
+    
+    def __str__(self):
+        return self.name
+    
 
 class Trip(models.Model):
     user = models.ForeignKey(User)
     destination = models.CharField(max_length=50)
     description = models.CharField(max_length=50)
-    travel_date_from = models.DateField()
-    travel_date_to = models.DateField()
+    travel_date_from = models.CharField(max_length=100)
+    travel_date_to = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects  = TripManger()
 
+    def __str__(self):
+        return self.destination
