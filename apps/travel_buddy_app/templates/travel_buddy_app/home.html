@@ -35,13 +35,11 @@
         </fieldset>
         </form>
 
-        <div>
+        <div class="incomming-data">
             <p>Django has saved these uses:</p>
             {% for user in newuser %}
             <p>name: {{user.name}}</p>   
-            <P>username: {{user.username}}</P>   
-            <p>name: {{user.des}}</p>   
-            <P>username: {{user.username}}</P>  
+            <P>username: {{user.username}}</P>          
             {% endfor %}
         </div>
 

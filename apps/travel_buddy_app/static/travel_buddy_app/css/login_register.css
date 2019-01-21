@@ -2,12 +2,12 @@ form {
     width: 33%;
 }
 
-.incomming-weather {
+.incomming-data {
     text-align: center;
     background-color: rgb(119, 119, 119);
     border-width: 2px;
     border-style: solid;
-    border-color: rgb(51, 51, 51);
+    border-color: black;
     border-image: initial;
     padding: 2px;
 }

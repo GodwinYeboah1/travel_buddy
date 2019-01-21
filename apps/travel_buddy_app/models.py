@@ -38,6 +38,42 @@ class UserManger(models.Manager):
                 )
             return response
 
+    def loginVadildation(self, userData):
+
+        #i want to extra the data 
+        # save it in a varibale 
+        #   Uber Object filter feature to search for the username
+        #   make sure the password match up \
+        response = {
+            'errors' : [],
+            'user': None,
+            'valid': True
+        }
+        #Funder user object 
+        foundUser = User.objects.get(pk=id).username
+        foundPassword = User.objects.get(pk=id).password
+        
+        if len(userData['username']) < 0:
+            response['errors'].append("Can not be blank")
+            response['valid']= False
+
+        if userData['username'] != foundUser:
+            response['errors'].append("Wrong user  blank")
+            response['valid']= False
+
+
+            
+
+         if len(userData["password"]) < 8: 
+            response["errors"].append('password name must be 8 charater and greater')
+            response['valid'] = False
+
+        if userData["password"] != userData["confirm_password"]:
+            response['errors'].append('Your password does not match')
+            response['valid'] = False
+
+
+
 class TripManger(models.Manager):
     
     def trip_validation(self, tripData):
@@ -64,7 +100,8 @@ class TripManger(models.Manager):
                     travel_date_to = tripData['travel_date_to'], 
                 )
             return response
-                
+                 
+        
 
 # Create your models here.
 class User(models.Model):
