@@ -9,20 +9,19 @@
     <link rel="stylesheet" href="{% static "travel_buddy_app/css/login_register.css" %}">
 </head>
 <body>
+
     <div class="wrapper">
         <!-- welcome message -->
         <h3>Welcome !</h3>
         <form action="create/user" method="post">
                 {%csrf_token%}
         <fieldset>
-            <legend>Register:</legend>
-            
+            <legend>Register:</legend>         
             Name:         <input type="text" name="name" id="name"><br>
             Username:     <input type="text" name="username" id="username"><br>
             Password:     <input type="password" name="password" id="password"><br>
-            
-            Confirm Pw    <input type="password" name="confirm_password" id="password"><br>
-                        <input type="submit" value="Register">
+            Confirm Pw      <input type="password" name="confirm_password" id="confirm_password"><br>
+                            <input type="submit" value="Register">
         </fieldset>
         </form>
 
@@ -35,6 +34,19 @@
                         <input type="submit" value="Login">
         </fieldset>
         </form>
+
+        <div>
+            <p>Django has saved these uses:</p>
+            {% for user in newuser %}
+            <p>name: {{user.name}}</p>   
+            <P>username: {{user.username}}</P>   
+            <p>name: {{user.des}}</p>   
+            <P>username: {{user.username}}</P>  
+            
+            {% endfor %}
+        </div>
+
+
     </div>    
 </body>
 </html>
